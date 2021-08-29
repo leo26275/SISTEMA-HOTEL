@@ -1,0 +1,720 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 14/04/2019, 01:01:10 PM
+    Author     : Sony
+*/
+
+
+body {
+    background-color: rgba(0, 0, 0, 0.12);
+    font-family: 'Raleway', sans-serif;
+    font-size: 1.20rem;
+}
+
+
+/*LOGO Y HEADER*/
+.my-header {
+    position: fixed;
+    width: 100%;
+    height: 50px;
+    z-index: 1030;
+    background-color: #00abab;
+}
+.my-header .my-logo {
+    webkit-transition: width 0.9s cubic-bezier(0.81, -0.05, 0.24, 1.31);
+    -o-transition: width 0.9s ease-in-out;
+    transition: width 0.9s cubic-bezier(0.81, -0.05, 0.24, 1.31);
+    display: block;
+    float: left;
+    height: 50px;
+    font-size: 20px;
+    line-height: 50px;
+    text-align: center;
+    width: 230px;
+    padding: 0 15px;
+    font-weight: 300;
+    overflow: hidden;
+}
+
+
+/*DIv de la zona de menu derecha*/
+.my-div-right{
+    position: absolute;
+    float: right;
+    right: 2px;
+}
+
+/*---ALERTA ICONO DE NOTIFICACION--------*/
+.my-header .navbar .nav > li > a > .label {
+    position: absolute;
+    top: 9px;
+    right: 7px;
+    text-align: center;
+    font-size: 9px;
+    padding: 2px 3px;
+    line-height: .9;
+}
+
+.label-default {
+    background-color: #f13720;
+}
+
+/*desplegable del usuario*/
+.navbar-nav .user-menu .user-image {
+    float: left;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    margin-top: -2px;
+}
+.navbar-nav  .user-menu  .dropdown-menu {
+    border-top-right-radius: 0;
+    border-top-left-radius: 0;
+    padding: 0px 0 0 0;
+    border-top-width: 0;
+    width: 240px;
+    height: 230px;
+    position: absolute;
+    right: 0px;
+    left: auto;
+    top: 50px;
+}
+.navbar-nav  .user-menu  .dropdown-menu  li.my-user-header  img {
+    height: 90px;
+    width: 90px;
+    border: 3px solid;
+    border-color: transparent;
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+/*color del punto para que el hover abarque el tamaño de la imagen del usuario*/
+.user-menu a span{
+    
+    color: #00abab;
+}
+
+/*panel del usu*/
+.navbar-nav  .user-menu .dropdown-menu  li.my-user-header {
+    height: 175px;
+    padding: 10px;
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.07);
+}
+.navbar-nav  .user-menu  .dropdown-menu  .my-user-footer {
+    background-color: white;
+    padding: 10px;
+}
+
+
+/*color de los iconos del encabezado*/
+a, .my-logo{
+    color: #fff;
+    text-decoration: none;
+}
+
+/*color del nombre del hotel*/
+a:hover:active:focus, .my-logo{
+    color: #fff;
+    text-decoration: none;
+}
+
+.nav>li>a:focus, .nav>li>a:hover{
+    
+    text-decoration: none;
+    background-color: rgba(2, 2, 8, 0.1);/*hover del encabezado en degradado*/
+    color: #00cece;
+    font-weight: 400;
+    border-left: 0px  #00cece;    
+    border-right: 0px  #00cece;
+}
+/*focus del desplegable del user*/
+.nav .open>a, .nav .open>a:focus, .nav .open>a:hover {
+    background-color: transparent;
+}
+
+/*page-wrapper*/
+
+.page-wrapper {
+    height: 100vh;
+}
+
+.page-wrapper .theme {
+    width: 40px;
+    height: 40px;
+    display: inline-block;
+    border-radius: 4px;
+    margin: 2px;
+}
+
+/*sidebar*/
+
+.page-wrapper.toggled .sidebar-wrapper {
+    left: 0px;
+}
+
+@media screen and (min-width: 168px) {
+    .page-wrapper.toggled .page-content {
+        padding-left: 250px;
+    }
+}
+/*show sidebar button*/
+#show-sidebar {
+    position: fixed;
+    left: 0;
+    top: 10px;
+    border-radius: 0 4px 4px 0px;
+    width: 35px;
+    transition-delay: 0.3s;
+    z-index: 3000;
+}
+.page-wrapper.toggled #show-sidebar {
+    left: -40px;
+}
+/*sidebar-wrapper*/
+
+.sidebar-wrapper {
+    width: 250px;
+    height: 100%;
+    max-height: 100%;
+    position: fixed;
+    top: 50px;
+    left: -300px;
+    z-index: 999;
+}
+
+.sidebar-wrapper ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar-wrapper a {
+    text-decoration: none;
+}
+
+/*sidebar-content*/
+
+.sidebar-content {
+    max-height: calc(100% - 30px);
+    height: calc(100% - 30px);
+    overflow-y: auto;
+    position: relative;
+}
+
+.sidebar-content.desktop {
+    overflow-y: hidden;
+}
+
+/*sidebar-brand*/
+
+.sidebar-wrapper .sidebar-brand {
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+}
+
+.sidebar-wrapper .sidebar-brand > a {
+    text-transform: uppercase;
+    font-weight: bold;
+    flex-grow: 1;
+}
+
+.sidebar-wrapper .sidebar-brand #close-sidebar {
+    cursor: pointer;
+    font-size: 20px;
+}
+/*sidebar-header*/
+
+.sidebar-wrapper .sidebar-header {
+    padding: 20px;
+    overflow: hidden;
+}
+
+.sidebar-wrapper .sidebar-header .user-pic {
+    float: left;
+    width: 60px;
+    padding: 2px;
+    border-radius: 12px;
+    margin-right: 15px;
+    overflow: hidden;
+}
+
+.sidebar-wrapper .sidebar-header .user-pic img {
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+}
+
+.sidebar-wrapper .sidebar-header .user-info {
+    float: left;
+}
+
+.sidebar-wrapper .sidebar-header .user-info > span {
+    display: block;
+}
+
+.sidebar-wrapper .sidebar-header .user-info .user-role {
+    font-size: 12px;
+}
+
+.sidebar-wrapper .sidebar-header .user-info .user-status {
+    font-size: 11px;
+    margin-top: 4px;
+}
+
+/*datos del user*/
+.sidebar-wrapper .sidebar-header .user-info .user-status i {
+    font-size: 8px;
+    margin-right: 4px;
+    color: #5cb85c;
+}
+
+/*sidebar-menu*/
+
+.sidebar-wrapper .sidebar-menu {
+    padding-bottom: 10px;
+}
+
+/*separacion y ancho de los menus con respecto al user*/
+.sidebar-wrapper .sidebar-menu .header-menu span {
+    font-weight: bold;
+    font-size: 14px;
+    padding: 15px 20px 5px 20px;
+    display: inline-block;
+}
+
+/*tamaño de los ul li*/
+.sidebar-wrapper .sidebar-menu ul li a {
+    display: inline-block;
+    width: 100%;
+    text-decoration: none;
+    position: relative;
+    padding: 8px 30px 8px 20px;
+}
+/*tamaño de cada lu li*/
+.sidebar-wrapper .sidebar-menu ul li a i {
+    margin-right: 10px;
+    font-size: 12px;
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    border-radius: 4px;
+}
+
+.sidebar-wrapper .sidebar-menu ul li a:hover > i::before {
+    display: inline-block;
+    animation: swing ease-in-out 0.5s 1 alternate;
+}
+
+/*posicionamientas de los sub menus*/
+.sidebar-wrapper .sidebar-menu .sidebar-dropdown .sidebar-submenu ul {
+    padding: 5px 0;
+}
+
+.sidebar-wrapper .sidebar-menu .sidebar-dropdown .sidebar-submenu li {
+    padding-left: 10px;
+    font-size: 13px;
+}
+
+.sidebar-wrapper .sidebar-menu ul li a span.label,
+.sidebar-wrapper .sidebar-menu ul li a span.badge {
+    float: right;
+    margin-top: 8px;
+    margin-left: 5px;
+}
+
+
+/*colores para los badge del sidebar*/
+.badge-nuevasreserva{
+    
+    color: white;
+    background-color:#00abab ;
+}
+
+.badge-nopagadas{
+    
+    color: white;
+    background-color: #28a745;
+}
+.badge-warning{
+    color: #212529;
+    background-color: #ffc107;
+    
+}
+.badge-danger{
+    color: white;
+    background-color: #28a745;
+    
+}
+
+/*badge para la eliminacion*/
+.badge-eliminar{
+    color: white;
+    background-color: #28a745;
+    
+}
+.badge-noeliminar{
+    color: white;
+    background-color: #F27474;
+    
+}
+
+/*para que los submenus no sean desplegables al iniciar la pagina*/
+.sidebar-wrapper .sidebar-menu .sidebar-submenu {
+    display: none;
+}
+
+
+
+/*--------------------------******Contendido de la page-content******-----------------------------*/
+
+.page-wrapper .page-content {
+    display: inline-block;
+    width: 100%;
+    padding-left: 0px;
+    padding-top: 60px;
+    height: 91.7%;/*verificar este bajado del footer despues*/
+}
+
+.page-wrapper .page-content > div {
+    padding: 20px 40px;
+}
+
+.page-wrapper .page-content {
+    overflow-x: hidden;
+}
+.page-content .container-fluid h2{
+    text-align: center;
+    
+}
+
+/*scroll bar*/
+
+::-webkit-scrollbar {
+    width: 5px;
+    height: 7px;
+}
+::-webkit-scrollbar-button {
+    width: 0px;
+    height: 0px;
+}
+::-webkit-scrollbar-thumb {
+    background: #525965;
+    border: 0px none #ffffff;
+    border-radius: 0px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #525965;
+}
+::-webkit-scrollbar-thumb:active {
+    background: #525965;
+}
+::-webkit-scrollbar-track {
+    background: transparent;
+    border: 0px none #ffffff;
+    border-radius: 50px;
+}
+::-webkit-scrollbar-track:hover {
+    background: transparent;
+}
+::-webkit-scrollbar-track:active {
+    background: transparent;
+}
+::-webkit-scrollbar-corner {
+    background: transparent;
+}
+
+/*color del sidebar*/
+.chiller-theme .sidebar-wrapper {
+    background: #232733;
+}
+
+.chiller-theme .sidebar-wrapper .sidebar-header,
+.chiller-theme .sidebar-wrapper .sidebar-search,
+.chiller-theme .sidebar-wrapper .sidebar-menu {
+    border-top: 0px solid #3a3f48;
+}
+
+.chiller-theme .sidebar-wrapper .sidebar-search input.search-menu,
+.chiller-theme .sidebar-wrapper .sidebar-search .input-group-text {
+    border-color: transparent;
+    box-shadow: none;
+    
+}
+
+/*color de las letras y los iconos*/
+.chiller-theme .sidebar-wrapper .sidebar-header .user-info .user-role,
+.chiller-theme .sidebar-wrapper .sidebar-header .user-info .user-status,
+.chiller-theme .sidebar-wrapper .sidebar-search input.search-menu,
+.chiller-theme .sidebar-wrapper .sidebar-search .input-group-text,
+.chiller-theme .sidebar-wrapper .sidebar-brand>a,
+.chiller-theme .sidebar-wrapper .sidebar-menu ul li a,
+.chiller-theme .sidebar-footer>a {
+    color: white;
+    
+}
+
+/*hover de las letras*/
+.chiller-theme .sidebar-wrapper .sidebar-menu ul li:hover>a,
+.chiller-theme .sidebar-wrapper .sidebar-menu .sidebar-dropdown.active>a,
+.chiller-theme .sidebar-wrapper .sidebar-header .user-info,
+.chiller-theme .sidebar-wrapper .sidebar-brand>a:hover,
+.chiller-theme .sidebar-footer>a:hover i {
+    color: #b8bfce;
+    
+}
+
+
+
+.page-wrapper.chiller-theme.toggled #close-sidebar:hover {
+    color: #ffffff;
+    
+}
+
+/*hover de los iconos*/
+.chiller-theme .sidebar-wrapper ul li:hover a i,
+.chiller-theme .sidebar-wrapper .sidebar-dropdown .sidebar-submenu li a:hover:before,
+.chiller-theme .sidebar-wrapper .sidebar-search input.search-menu:focus+span,
+.chiller-theme .sidebar-wrapper .sidebar-menu .sidebar-dropdown.active a i {
+    color: #00cece;
+    text-shadow:0px 0px 10px rgba(22, 199, 255, 0.5);
+    
+}
+
+/*color del recuadro que almacena los iconos del sidebar*/
+.chiller-theme .sidebar-wrapper .sidebar-menu ul li a i,
+.chiller-theme .sidebar-wrapper .sidebar-menu .sidebar-dropdown div,
+.chiller-theme .sidebar-wrapper .sidebar-search input.search-menu,
+.chiller-theme .sidebar-wrapper .sidebar-search .input-group-text {
+    background: #324047;
+    
+}
+.chiller-theme .sidebar-wrapper .sidebar-menu .header-menu span {
+    color: white;
+}
+
+.main-footer {
+    z-index: 150162;
+  margin-right: 0px;
+  margin-top:  0;/*para bajar el footer mas o dejarlo en posicion zero para qeue este cerca del contenedor*/
+  text-align: center;
+}
+.main-footer {
+  background: #fff;
+  padding: 15px;
+  color: #444;
+  border-top: 1px solid #d2d6de;
+}
+.main-footer {
+  -webkit-transition: -webkit-transform 0.3s ease-in-out, margin 0.3s ease-in-out;
+  -moz-transition: -moz-transform 0.3s ease-in-out, margin 0.3s ease-in-out;
+  -o-transition: -o-transform 0.3s ease-in-out, margin 0.3s ease-in-out;
+  transition: transform 0.3s ease-in-out, margin 0.3s ease-in-out;
+  margin-left: 230px;
+  z-index: 820;
+}
+
+/*personalizacion de los recuadros del index*/
+.col-lg-3 {/*tamaño de los recuadros*/
+    width: 25%;
+}
+
+/*general para los cuatro cuadros del index*/
+.small-box {
+    border-radius: 2px;
+    position: relative;
+    display: block;
+    margin-bottom: 20px;
+    box-shadow: 0 1px 1px rgba(0,0,0,0.1);
+}
+
+
+.small-box .icon {
+    -webkit-transition: all .3s linear;
+    -o-transition: all .3s linear;
+    transition: all .3s linear;
+    position: absolute;
+    top: -10px;
+    right: 10px;
+    z-index: 0;
+    font-size: 90px;
+    color: rgba(0,0,0,0.15);
+}
+
+.small-box > .inner {/*alto de los small box*/
+    padding: 10px;
+}
+
+/*colores para cada small box del index*/
+.bg-verdeaqua {
+    background-color: #00abab !important;
+}
+.bg-green{
+    background-color: #28a745 !important;
+}
+.bg-aqua{
+   background-color: #00cece !important;
+}
+.bg-orange{
+    background-color: orange !important;
+}
+
+/*box para listado de habitaciones*/
+
+.bg-habitacionocupada {
+    background-color: #f05d5d !important;
+}
+
+.bg-habitaciondisponible {
+    background-color: #6cca51 !important;
+}
+
+.bg-habitacionmantenimiento {
+    background-color: #10a8e5 !important;
+}
+
+/*color para las letras de todos los small box del index*/
+.bg-verdeaqua, .bg-green,.bg-aqua,.bg-orange{
+    color: #fff !important;
+}
+
+
+
+/*para todos los cuadros en general del index*/
+.small-box > .small-box-footer {
+    position: relative;
+    text-align: center;
+    padding: 3px 0;
+    color: #fff;
+    color: rgba(255,255,255,0.8);
+    display: block;
+    z-index: 10;
+    background: rgba(0,0,0,0.1);
+    text-decoration: none;
+}
+/*para las letras del small box de los cuadros del index*/
+.small-box h3 {
+    font-size: 38px;
+    font-weight: bold;
+    margin: 0 0 10px 0;
+    white-space: nowrap;
+    padding: 0;
+}
+
+/*diseño de los formularios*/
+.content input,
+.content select,
+.content textarea:not([class^="cke"]) {
+  -webkit-border-radius: 3px;
+  -webkit-background-clip: padding-box;
+  -moz-border-radius: 3px;
+  -moz-background-clip: padding;
+  border-radius: 3px;
+  background-clip: padding-box;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.08);
+  -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.08);
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.08);
+  font: inherit;
+  color: inherit;
+  border: 1px solid #D9D9D9;
+  padding: .2em .5em;
+}
+
+.content textarea{
+    width: 485px;
+}
+
+.box-header{
+    color:#444;
+    display:block;
+    padding:10px;
+    position:relative
+}
+.box .box-primary {
+    border-top-color: #3c8dbc;
+    height: 10px;
+}
+
+.box-body {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 3px;
+    border-bottom-left-radius: 3px;
+    padding: 10px;
+}
+.content {
+    min-height: 250px;
+    padding: 15px;
+        padding-right: 15px;
+        padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+    padding-left: 15px;
+    padding-right: 15px;
+    background: white;
+}
+.content div.todo:before {
+  content: "TODO";
+  font-weight: bold;
+}
+
+.box-header.with-border h3{
+    text-align: center;
+    color: #00abab;
+}
+
+
+/*.contenedor {
+  width: 90%;
+  height: 100%;
+  position: relative;
+  max-width: 1000px;
+  margin: auto;
+  background: #ccc;
+}*/
+
+/*propiedades del reloj*/
+.widget {
+  width: 40%;
+  height: 40%;
+  position: absolute;
+  top: 350px;
+  bottom: 0;
+  left: 200px;
+  right: 0;
+  margin: auto;
+}
+.widget p {
+  display: inline-block;
+  line-height: 1em;
+}
+.fecha {
+  font-family: arial;
+  text-align: center;
+  font-size: 1.5em;
+  margin-bottom: 5px;
+  background: #00abab;
+  color: white;
+  padding: 20px;
+  width: 100%;
+}
+.reloj {
+  font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+  width: 100%;
+  padding: 20px;
+  font-size: 4em;
+  text-align: center;
+  background: white;
+}
+.reloj .cajaSegundos {
+  display: inline-block;  
+}
+.reloj .ampm, .reloj .segundos{
+  display: block;
+  font-size: 2rem;
+}

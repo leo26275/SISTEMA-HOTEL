@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="4303bc09-bcad-4019-8b66-0cb69dfe36c1">
+	<property name="ireport.zoom" value="3.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString>
+		<![CDATA[select CONCAT(c.nombres,' ',c.apellidos) as nombrec, r.tiporeserva, r.fechaingresada,
+r.fechasalida, (EXTRACT(DAY FROM DATE (r.fechasalida)) - EXTRACT(DAY FROM DATE(r.fechaingresada))) as dias,
+h.preciodiario, h.numero,
+(EXTRACT(DAY FROM DATE (r.fechasalida)) - EXTRACT(DAY FROM DATE(r.fechaingresada)))*h.preciodiario
+from reserva r
+Inner join clientes as c on c.idcliente=r.idcliente
+Inner join habitacion as h on h.idhabitacion=r.idhabitacion]]>
+	</queryString>
+	<field name="nombrec" class="java.lang.String"/>
+	<field name="tiporeserva" class="java.lang.String"/>
+	<field name="fechaingresada" class="java.sql.Date"/>
+	<field name="fechasalida" class="java.sql.Date"/>
+	<field name="dias" class="java.lang.Double"/>
+	<field name="preciodiario" class="java.math.BigDecimal"/>
+	<field name="numero" class="java.lang.String"/>
+	<field name="?column?" class="java.lang.Double"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="105" splitType="Stretch">
+			<rectangle>
+				<reportElement x="0" y="13" width="802" height="7" forecolor="#FFFFFF" backcolor="#FFCC66" uuid="ee69bd29-7fc7-48b5-952b-05bfa407e8b1"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="267" y="40" width="318" height="22" forecolor="#1C74A6" uuid="80336155-28bb-49e9-84b6-ba0801294da9"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[DETALLES DE RESERVA]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="0" y="83" width="802" height="7" forecolor="#FFFFFF" backcolor="#FFCC66" uuid="f19ae775-4457-4f70-b526-39f798a05dfd"/>
+			</rectangle>
+			<image>
+				<reportElement x="28" y="20" width="131" height="63" uuid="e4adcf02-eb4d-4f88-a574-fa690adef093"/>
+				<imageExpression><![CDATA["C:\\Users\\leo_g\\Desktop\\Sistema Hotel Completado\\Sistema Hotel\\web\\images\\logo.jpg"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="22" splitType="Stretch">
+			<rectangle>
+				<reportElement x="0" y="0" width="802" height="20" forecolor="#FFFFFF" backcolor="#009999" uuid="9f6dc604-61c0-4060-acba-ee714dba574f"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="312" y="2" width="71" height="20" forecolor="#FFFFFF" uuid="7fe845dd-af13-4246-8c0e-efa82fd45416"/>
+				<textElement>
+					<font size="12" isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Fecha inicio]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="424" y="0" width="71" height="20" forecolor="#FFFFFF" uuid="41fb9ca3-443e-47d9-b9f1-a20bbce25dc7"/>
+				<textElement>
+					<font size="12" isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Fecha salida]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="159" y="0" width="71" height="20" forecolor="#FFFFFF" uuid="0cb69f24-42ca-4a90-8c5c-dd47ca47dc28"/>
+				<textElement>
+					<font size="12" isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Tipo reserva]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="534" y="0" width="71" height="20" forecolor="#FFFFFF" uuid="3ff23a56-ca3b-442a-915f-66275d2ec452"/>
+				<textElement>
+					<font size="12" isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Días]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="731" y="0" width="71" height="20" forecolor="#FFFFFF" uuid="afb2afbf-c559-4b95-a5e3-688aa24a9229"/>
+				<textElement>
+					<font size="12" isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Total]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="11" y="0" width="71" height="20" forecolor="#FFFFFF" uuid="4c43c6b1-07aa-40cb-aae1-3d213ac0a0e9"/>
+				<textElement>
+					<font size="12" isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Nombre]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="230" y="0" width="62" height="20" forecolor="#FFFFFF" uuid="5aca8eec-4222-4e45-9169-1c6d48d98d30"/>
+				<textElement>
+					<font size="12" isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Número habitacion]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="621" y="0" width="81" height="20" forecolor="#FFFFFF" uuid="bd78189f-ae38-40d4-a145-274cba0f1110"/>
+				<textElement>
+					<font size="12" isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Precio diario]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="8" splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="26" splitType="Stretch">
+			<textField>
+				<reportElement x="10" y="0" width="149" height="20" uuid="21e4eaad-0547-4ea8-9ed1-6a8d084f6532"/>
+				<textFieldExpression><![CDATA[$F{nombrec}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="172" y="0" width="58" height="20" uuid="89969d54-1cf1-4308-a6a4-d98dc656c6f8"/>
+				<textFieldExpression><![CDATA[$F{tiporeserva}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="312" y="0" width="100" height="20" uuid="b299098c-3c6b-4c5b-bcb5-33207768e821"/>
+				<textFieldExpression><![CDATA[$F{fechaingresada}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="424" y="0" width="80" height="20" uuid="d7354588-8677-4cc2-beb6-0dc574902165"/>
+				<textFieldExpression><![CDATA[$F{fechasalida}]]></textFieldExpression>
+			</textField>
+			<textField pattern="0">
+				<reportElement x="230" y="0" width="62" height="20" uuid="04282cec-5796-417b-995c-176f4b8392b9"/>
+				<textFieldExpression><![CDATA[$F{numero}]]></textFieldExpression>
+			</textField>
+			<textField pattern="0">
+				<reportElement x="514" y="0" width="71" height="20" uuid="ac8b3484-30a8-4bb9-85a6-c3c8c4d38e0e"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{dias}]]></textFieldExpression>
+			</textField>
+			<textField pattern="$0.00">
+				<reportElement x="621" y="0" width="81" height="20" uuid="27e3bb51-0c41-47b2-8779-445b26988675"/>
+				<textFieldExpression><![CDATA[$F{preciodiario}]]></textFieldExpression>
+			</textField>
+			<textField pattern="$0.00">
+				<reportElement x="731" y="0" width="71" height="20" uuid="558b27fe-432d-4ba0-a54d-d719b1bb73bd"/>
+				<textFieldExpression><![CDATA[$F{?column?}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="38" splitType="Stretch">
+			<textField>
+				<reportElement x="312" y="0" width="80" height="20" uuid="708fb7c2-3867-455b-8f77-e4bf8299f7b4"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Pág"+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="392" y="0" width="40" height="20" uuid="a3c39bd3-634d-4c51-b16f-ebb60519b7f2"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="702" y="0" width="100" height="20" uuid="196e9cc7-3b2e-4b7c-9d6b-5c0df045495c"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<textField pattern="h.mm a">
+				<reportElement x="11" y="0" width="100" height="20" uuid="987944bb-20a4-4ec6-8147-248596ca58f4"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="11" splitType="Stretch"/>
+	</summary>
+</jasperReport>

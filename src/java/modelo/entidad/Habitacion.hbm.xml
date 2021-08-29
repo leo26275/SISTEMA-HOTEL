@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 15/04/2019 12:56:11 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="modelo.entidad.Habitacion" table="habitacion" schema="public" optimistic-lock="version">
+        <id name="idhabitacion" type="int">
+            <column name="idhabitacion" />
+            <generator class="assigned" />
+        </id>
+        <property name="numero" type="string">
+            <column name="numero" length="10" />
+        </property>
+        <property name="piso" type="string">
+            <column name="piso" length="10" />
+        </property>
+        <property name="descripcion" type="string">
+            <column name="descripcion" length="300" />
+        </property>
+        <property name="caracteristicas" type="string">
+            <column name="caracteristicas" length="300" />
+        </property>
+        <property name="preciodiario" type="big_decimal">
+            <column name="preciodiario" precision="10" />
+        </property>
+        <property name="estado" type="string">
+            <column name="estado" length="25" />
+        </property>
+        <property name="tipohabitacion" type="string">
+            <column name="tipohabitacion" length="30" />
+        </property>
+        <set name="reservas" table="reserva" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idhabitacion" not-null="true" />
+            </key>
+            <one-to-many class="modelo.entidad.Reserva" />
+        </set>
+    </class>
+</hibernate-mapping>

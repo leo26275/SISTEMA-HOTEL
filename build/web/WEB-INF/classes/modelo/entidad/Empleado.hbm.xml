@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 15/04/2019 12:56:11 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="modelo.entidad.Empleado" table="empleado" schema="public" optimistic-lock="version">
+        <id name="idempleado" type="int">
+            <column name="idempleado" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="cargos" class="modelo.entidad.Cargos" fetch="select">
+            <column name="cargo" not-null="true" />
+        </many-to-one>
+        <property name="nombres" type="string">
+            <column name="nombres" length="100" />
+        </property>
+        <property name="apellidos" type="string">
+            <column name="apellidos" length="100" />
+        </property>
+        <property name="tipodocumento" type="string">
+            <column name="tipodocumento" length="50" />
+        </property>
+        <property name="numerodocu" type="string">
+            <column name="numerodocu" length="40" />
+        </property>
+        <property name="direccion" type="string">
+            <column name="direccion" length="300" />
+        </property>
+        <property name="telefono" type="string">
+            <column name="telefono" length="9" />
+        </property>
+        <property name="email" type="string">
+            <column name="email" length="150" />
+        </property>
+        <set name="reservas" table="reserva" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idempleado" not-null="true" />
+            </key>
+            <one-to-many class="modelo.entidad.Reserva" />
+        </set>
+        <set name="usuarioses" table="usuarios" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="empleado" not-null="true" />
+            </key>
+            <one-to-many class="modelo.entidad.Usuarios" />
+        </set>
+    </class>
+</hibernate-mapping>

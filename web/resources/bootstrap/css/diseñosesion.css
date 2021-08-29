@@ -1,0 +1,25 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 20/04/2019, 08:24:47 PM
+    Author     : Sony
+*/
+
+.content{
+    height: 100%;
+    width: 100%;
+    justify-content: center;
+}
+
+.with-border h3{
+    text-align: center;
+    color: #337ab7;
+}
+
+.box-body{
+    margin-top: 10px;
+    
+}

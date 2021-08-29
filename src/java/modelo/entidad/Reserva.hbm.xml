@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 15/04/2019 12:56:11 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="modelo.entidad.Reserva" table="reserva" schema="public" optimistic-lock="version">
+        <id name="idreserva" type="int">
+            <column name="idreserva" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="clientes" class="modelo.entidad.Clientes" fetch="select">
+            <column name="idcliente" not-null="true" />
+        </many-to-one>
+        <many-to-one name="empleado" class="modelo.entidad.Empleado" fetch="select">
+            <column name="idempleado" not-null="true" />
+        </many-to-one>
+        <many-to-one name="habitacion" class="modelo.entidad.Habitacion" fetch="select">
+            <column name="idhabitacion" not-null="true" />
+        </many-to-one>
+        <property name="tiporeserva" type="string">
+            <column name="tiporeserva" length="25" />
+        </property>
+        <property name="fechareserva" type="date">
+            <column name="fechareserva" length="13" />
+        </property>
+        <property name="fechaingresada" type="date">
+            <column name="fechaingresada" length="13" />
+        </property>
+        <property name="fechasalida" type="date">
+            <column name="fechasalida" length="13" />
+        </property>
+        <property name="estado" type="string">
+            <column name="estado" length="25" />
+        </property>
+        <set name="pagos" table="pago" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idreserva" not-null="true" />
+            </key>
+            <one-to-many class="modelo.entidad.Pago" />
+        </set>
+        <set name="consumos" table="consumo" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idreserva" not-null="true" />
+            </key>
+            <one-to-many class="modelo.entidad.Consumo" />
+        </set>
+    </class>
+</hibernate-mapping>

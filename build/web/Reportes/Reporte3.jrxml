@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="91edbcfe-e758-474c-981f-d4486aefe3e7">
+	<property name="ireport.zoom" value="3.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString>
+		<![CDATA[select prod.nombre, count(con.idproducto) as total
+from producto as prod
+inner join consumo as con on con.idproducto = prod.idproducto
+group by prod.nombre order by total desc]]>
+	</queryString>
+	<field name="nombre" class="java.lang.String"/>
+	<field name="total" class="java.lang.Long"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="105" splitType="Stretch">
+			<staticText>
+				<reportElement x="179" y="27" width="297" height="50" forecolor="#1C74A6" uuid="0c5cad8d-5e56-4284-8fc7-fde8150daf9b"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="20" isBold="true"/>
+				</textElement>
+				<text><![CDATA[PRODUCTOS MÁS CONSUMIDOS]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="0" y="12" width="555" height="7" forecolor="#FFFFFF" backcolor="#FFCC66" uuid="d0abccf3-db05-42f0-895f-58b26438a73d"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="4" y="82" width="552" height="7" forecolor="#FFFFFF" backcolor="#FFCC66" uuid="5ec35fb3-03a8-490b-9baf-3420b80c7c89"/>
+			</rectangle>
+			<image>
+				<reportElement x="25" y="19" width="119" height="63" uuid="b1e3385a-2963-43a7-ae59-c47d9c6c87db"/>
+				<imageExpression><![CDATA["C:\\Users\\leo_g\\Desktop\\Sistema Hotel Completado\\Sistema Hotel\\web\\images\\logo.jpg"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band splitType="Stretch"/>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="21" splitType="Stretch">
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="455" y="0" width="100" height="20" uuid="159073af-fdbd-45fa-805d-8ff048d3b473"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="229" y="0" width="80" height="20" uuid="0e7efec6-598c-41c0-850d-3bc2f6a1189e"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Pág"+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="309" y="0" width="40" height="20" uuid="3101a4c9-1c6f-40e9-80cf-412367a0fd9e"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="h.mm a">
+				<reportElement x="15" y="0" width="100" height="20" uuid="0bf8af9d-d030-4d96-8eaa-b2b523377e7d"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="334" splitType="Stretch">
+			<pieChart>
+				<chart>
+					<reportElement x="0" y="34" width="551" height="300" uuid="9906aff8-0be6-4dae-9a4a-9980b0984f22"/>
+					<chartTitle/>
+					<chartSubtitle/>
+					<chartLegend/>
+				</chart>
+				<pieDataset>
+					<keyExpression><![CDATA[$F{nombre}]]></keyExpression>
+					<valueExpression><![CDATA[$F{total}]]></valueExpression>
+				</pieDataset>
+				<piePlot>
+					<plot/>
+					<itemLabel/>
+				</piePlot>
+			</pieChart>
+		</band>
+	</summary>
+</jasperReport>

@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 15/04/2019 12:56:11 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="modelo.entidad.Pago" table="pago" schema="public" optimistic-lock="version">
+        <id name="idpago" type="int">
+            <column name="idpago" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="reserva" class="modelo.entidad.Reserva" fetch="select">
+            <column name="idreserva" not-null="true" />
+        </many-to-one>
+        <property name="tipocomprobante" type="string">
+            <column name="tipocomprobante" length="25" />
+        </property>
+        <property name="numcomprobante" type="string">
+            <column name="numcomprobante" length="25" />
+        </property>
+        <property name="igv" type="big_decimal">
+            <column name="igv" precision="4" />
+        </property>
+        <property name="fechaemision" type="date">
+            <column name="fechaemision" length="13" />
+        </property>
+        <property name="fechapago" type="date">
+            <column name="fechapago" length="13" />
+        </property>
+    </class>
+</hibernate-mapping>

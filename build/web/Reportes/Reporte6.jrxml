@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="4303bc09-bcad-4019-8b66-0cb69dfe36c1">
+	<property name="ireport.zoom" value="3.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString>
+		<![CDATA[select p.nombre, p.descripcion, c.nombre as categoria, p.precioventa
+from producto p
+Inner join categoria as c on c.idcategoria=p.idcategoria]]>
+	</queryString>
+	<field name="nombre" class="java.lang.String"/>
+	<field name="descripcion" class="java.lang.String"/>
+	<field name="categoria" class="java.lang.String"/>
+	<field name="precioventa" class="java.math.BigDecimal"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="99" splitType="Stretch">
+			<rectangle>
+				<reportElement x="0" y="13" width="555" height="7" forecolor="#FFFFFF" backcolor="#FFCC66" uuid="ee69bd29-7fc7-48b5-952b-05bfa407e8b1"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="163" y="33" width="318" height="37" forecolor="#1C74A6" uuid="80336155-28bb-49e9-84b6-ba0801294da9"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[PRODUCTOS EXISTENTES]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="0" y="83" width="552" height="7" forecolor="#FFFFFF" backcolor="#FFCC66" uuid="f19ae775-4457-4f70-b526-39f798a05dfd"/>
+			</rectangle>
+			<image>
+				<reportElement x="23" y="20" width="128" height="63" uuid="76b9acb1-75f2-4a8e-bbdc-c3ac37a7353b"/>
+				<imageExpression><![CDATA["C:\\Users\\leo_g\\Desktop\\Sistema Hotel Completado\\Sistema Hotel\\web\\images\\logo.jpg"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="22" splitType="Stretch">
+			<rectangle>
+				<reportElement x="0" y="0" width="552" height="20" forecolor="#FFFFFF" backcolor="#009999" uuid="9f6dc604-61c0-4060-acba-ee714dba574f"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="334" y="0" width="71" height="20" forecolor="#FFFFFF" uuid="7fe845dd-af13-4246-8c0e-efa82fd45416"/>
+				<textElement>
+					<font size="12" isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Categoria]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="471" y="0" width="71" height="20" forecolor="#FFFFFF" uuid="41fb9ca3-443e-47d9-b9f1-a20bbce25dc7"/>
+				<textElement>
+					<font size="12" isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Precio]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="163" y="0" width="71" height="20" forecolor="#FFFFFF" uuid="0cb69f24-42ca-4a90-8c5c-dd47ca47dc28"/>
+				<textElement>
+					<font size="12" isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Descripción]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="11" y="0" width="71" height="20" forecolor="#FFFFFF" uuid="4c43c6b1-07aa-40cb-aae1-3d213ac0a0e9"/>
+				<textElement>
+					<font size="12" isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Nombre]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="1" splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="23" splitType="Stretch">
+			<textField>
+				<reportElement x="11" y="0" width="100" height="20" uuid="d50062a7-bc53-45e5-92c7-d9dd0ea584b7"/>
+				<textFieldExpression><![CDATA[$F{nombre}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="334" y="0" width="100" height="20" uuid="1f5f8693-0640-46f6-be6e-fd80c2d43a99"/>
+				<textFieldExpression><![CDATA[$F{categoria}]]></textFieldExpression>
+			</textField>
+			<textField pattern="$0.00">
+				<reportElement x="471" y="0" width="81" height="20" uuid="49202c6a-d3c7-4036-b951-b7ffedc1066a"/>
+				<textFieldExpression><![CDATA[$F{precioventa}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="174" y="0" width="150" height="20" uuid="fb77d981-307d-4b96-9b17-8c92668bc9cb"/>
+				<textFieldExpression><![CDATA[$F{descripcion}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="38" splitType="Stretch">
+			<textField>
+				<reportElement x="193" y="0" width="80" height="20" uuid="708fb7c2-3867-455b-8f77-e4bf8299f7b4"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Pág"+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="273" y="0" width="40" height="20" uuid="a3c39bd3-634d-4c51-b16f-ebb60519b7f2"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="461" y="0" width="100" height="20" uuid="196e9cc7-3b2e-4b7c-9d6b-5c0df045495c"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<textField pattern="HH.mm">
+				<reportElement x="11" y="0" width="100" height="20" uuid="3fe042f2-6495-4894-9c7c-845c07a3c05e"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="11" splitType="Stretch"/>
+	</summary>
+</jasperReport>

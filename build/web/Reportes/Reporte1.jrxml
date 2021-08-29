@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="91edbcfe-e758-474c-981f-d4486aefe3e7">
+	<property name="ireport.zoom" value="2.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString>
+		<![CDATA[select cli.nombres, cli.apellidos, cli.telefono, cli.direccion, sum(con.cantidad*prod.precioventa)
+from clientes as cli 
+inner join reserva as res on cli.idcliente = res.idcliente
+inner join consumo as con on res.idreserva = con.idreserva
+inner join producto as prod on con.idproducto = prod.idproducto
+group by cli.nombres, cli.apellidos , cli.telefono, cli.direccion]]>
+	</queryString>
+	<field name="nombres" class="java.lang.String"/>
+	<field name="apellidos" class="java.lang.String"/>
+	<field name="telefono" class="java.lang.String"/>
+	<field name="direccion" class="java.lang.String"/>
+	<field name="sum" class="java.math.BigDecimal"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="95" splitType="Stretch">
+			<staticText>
+				<reportElement x="164" y="34" width="318" height="50" forecolor="#1C74A6" uuid="0c5cad8d-5e56-4284-8fc7-fde8150daf9b"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[TOTAL DE GASTOS POR CONSUMO DE CADA CLIENTE]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="6" y="19" width="546" height="7" forecolor="#FFFFFF" backcolor="#FFCC66" uuid="460005d9-dbde-40cf-9e9f-f44b5be5aa10"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="6" y="84" width="546" height="7" forecolor="#FFFFFF" backcolor="#FFCC66" uuid="1b3b881e-3119-4036-aedf-90d522891098"/>
+			</rectangle>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="29" splitType="Stretch">
+			<rectangle>
+				<reportElement x="6" y="4" width="546" height="20" forecolor="#FFFFFF" backcolor="#009999" uuid="8c453041-af52-4c7a-83a5-3ab2fda34f77"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="6" y="4" width="75" height="20" forecolor="#FFFFFF" uuid="dacc20db-1ff3-456e-95e9-54df5fb63743"/>
+				<textElement>
+					<font isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Nombre]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="97" y="4" width="85" height="20" forecolor="#FFFFFF" uuid="1c85a1aa-0082-43d1-9560-9ee3bb19fc27"/>
+				<textElement>
+					<font isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Apellido]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="201" y="4" width="89" height="20" forecolor="#FFFFFF" uuid="f04ac593-9938-49b6-a7a0-a23a56c52f29"/>
+				<textElement>
+					<font isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Teléfono]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="305" y="4" width="100" height="20" forecolor="#FFFFFF" uuid="9d80fda5-3414-4674-bde3-150825fa4c1e"/>
+				<textElement>
+					<font isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Dirección]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="461" y="4" width="85" height="20" forecolor="#FFFFFF" uuid="a92c5a34-a0a9-437d-94b3-7ffb8f3c269d"/>
+				<textElement>
+					<font isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Total]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="28" splitType="Stretch">
+			<textField>
+				<reportElement x="6" y="1" width="75" height="20" uuid="4fb72c79-46d5-4a8a-abbe-ad8ae3ba31bc"/>
+				<textFieldExpression><![CDATA[$F{nombres}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="97" y="1" width="85" height="20" uuid="be1baade-b59b-4191-875e-a87ad1743a65"/>
+				<textFieldExpression><![CDATA[$F{apellidos}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="206" y="1" width="89" height="20" uuid="85e21e50-7b03-4cbf-a0e0-8f00d5c2f912"/>
+				<textFieldExpression><![CDATA[$F{telefono}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="309" y="7" width="146" height="20" uuid="eea2878a-02ae-4eb4-b80e-7313301fe24a"/>
+				<textFieldExpression><![CDATA[$F{direccion}]]></textFieldExpression>
+			</textField>
+			<textField pattern="$##.##">
+				<reportElement x="470" y="7" width="85" height="20" uuid="f7d16a37-fe66-45d9-80d6-ac0016ebe2df"/>
+				<textFieldExpression><![CDATA[$F{sum}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="21" splitType="Stretch">
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="455" y="0" width="100" height="20" uuid="159073af-fdbd-45fa-805d-8ff048d3b473"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="215" y="1" width="80" height="20" uuid="0e7efec6-598c-41c0-850d-3bc2f6a1189e"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Pág"+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="295" y="0" width="40" height="20" uuid="3101a4c9-1c6f-40e9-80cf-412367a0fd9e"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="h.mm a">
+				<reportElement x="6" y="1" width="100" height="20" uuid="7b662564-3850-4148-baf3-8000887a7b3b"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>
